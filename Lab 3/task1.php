@@ -1,3 +1,77 @@
+<?php
+   $errName = "";
+   $name = "";
+   $errUname = "";
+   $pass = "";
+   $cpass = "";
+   $errMail = "";
+   $mail = "";
+   $phone = "";
+   $address = "";
+   $bDay = "";
+   if (isset($_POST["register"])) {
+   	  if (empty($_POST["name"])) {
+        $errName = "Name required*";
+   	  }
+   	  else $name = htmlspecialchars($_POST["name"]);
+   	  if (empty($_POST["username"])) {
+   	  	$errUname = "Username required*";
+   	  }
+   	  else if (strlen($_POST["username"]) < 6) {
+   	  	$errUname = "Username must be at least 6 characters";
+   	  }
+   	  if (strlen(strpos($_POST["username"], " ")) > 0) {
+   	  	if (strlen($errUname) > 0) {
+   	  	  $errUname .= " and space is not allowed in username";
+   	  	}
+   	  	else $errUname = "Space is not allowed in username";
+   	  }
+   	  if (empty($_POST["pass"])) {
+   	  	$pass = "Password required*";
+   	  }
+   	  if (empty($_POST["cpass"])) {
+   	  	$cpass = "Confirm password required*";
+   	  }
+   	  if (empty($_POST["email"])) {
+   	  	$errMail = "Mail address required*";
+   	  }
+   	  else if (strlen(strpos($_POST["email"] , "@")) > 0 && strlen(strpos($_POST["email"], ".")) > 0) {
+   	  	if (strpos($_POST["email"] , "@") > strrpos($_POST["email"], ".")) {
+   	  	  $errMail = "Invalid mail format [wrong placcement]";
+   	  	}
+   	  	else $mail = htmlspecialchars($_POST["email"]);
+   	  }
+   	  else $errMail = "Invalid mail format [Missing characters]";
+   	  if (empty($_POST["address"])) {
+   	  	$address = "Address required*";
+   	  }
+   	  if (empty($_POST["phone"]) || empty($_POST["code"])) {
+   	  	$phone = "Phone number required*";
+   	  }
+   	  if (empty($_POST["address"]) || empty($_POST["city"]) || empty($_POST["state"]) || empty($_POST["zipCode"])) {
+   	  	$address = "Each section of address should be filled*";
+   	  }
+   	  if (empty($_POST["day"])) {
+   	  	$bDay = $bDay . "Day";
+   	  }
+   	  if (empty($_POST["month"])) {
+   	  	if (strlen($bDay) > 1) {
+   	  	  $bDay .= ", month";
+   	  	}
+   	  	else $bDay .= "Month";
+   	  }
+   	  if (empty($_POST["year"])) {
+   	  	if (strlen($bDay) > 1) {
+   	  	  $bDay .= " and year";
+   	  	}
+   	  	else $bDay = "Year";
+   	  }
+   	  if (strlen($bDay) > 1) {
+   	  	if (strlen($bDay) <= 5) $bDay .= " is required*";
+   	  	else $bDay .= " are required*";
+   	  }
+   }
+?>
 <html>
 	<title>
 		Register page
@@ -17,6 +91,11 @@
 						</td>
 						<td>
 							<input type="text" name="name">
+							<span> 
+                              <?php
+                                echo $errName;
+                              ?>
+							</span>
 						</td>
 					</tr>
 					<tr>
@@ -25,6 +104,11 @@
 						</td>
 						<td>
 							<input type="text" name="username">
+							<span>
+								<?php
+                                  echo $errUname;
+								?>
+							</span>
 						</td>
 					</tr>
 					<tr>
@@ -33,6 +117,11 @@
 						</td>
 						<td>
 							<input type="Password" name="pass">
+							<span>
+								<?php
+                                  echo $pass;
+								?>
+							</span>
 						</td>
 					</tr>
 					<tr>
@@ -40,7 +129,12 @@
 						     Confirm Password:
 						</td>
 						<td>
-							<input type="Password" name="upass">
+							<input type="Password" name="cpass">
+							<span>
+								<?php
+                                  echo $cpass;
+								?>
+							</span>
 						</td>
 					</tr>
 					<tr>
@@ -49,6 +143,11 @@
 						</td>
 						<td>
 							<input type="text" name="email">
+							<span>
+								<?php
+                                  echo $errMail;
+								?>
+							</span>
 						</td>
 					</tr>
 					<tr>
@@ -56,7 +155,12 @@
 							Phone:
 						</td>
 						<td>
-							<input type="text" size="5" placeholder="Code"> - <input type="text" size="7" placeholder="Number">
+							<input type="text" size="5" placeholder="Code" name="code"> - <input type="text" size="7" placeholder="Number" name = "phone">
+							<span>
+								<?php
+                                  echo $phone;
+								?>
+							</span>
 						</td>
 					</tr>
 					<tr>
@@ -65,11 +169,16 @@
 						</td>
 						<td>
 							<input type="text" name="address" placeholder="Street Address">
+							<span>
+								<?php
+                                  echo $address;
+								?>
+							</span>
 						</td>
 					</tr>
 					<tr><td></td>
 						<td>	
-						   <input type="text" name="city" size="7" placeholder="City"> - <input type="text" name="state" size="5" place>
+						   <input type="text" name="city" size="7" placeholder="City"> - <input type="text" name="state" size="5" placeholder="state">
 						</td>
 					</tr>
 					<tr>
@@ -83,7 +192,7 @@
 							Birth Date:
 						</td>
 						<td>
-							<select>
+							<select name = "day">
 								<option disabled="disabled" selected="selected"> Day </option>
 								<?php
                                    for($i = 1; $i <= 31; $i++) {
@@ -91,7 +200,7 @@
                                    }
 								?>
 							</select>
-							<select>
+							<select name="month">
 								<option disabled="disabled" selected="selected"> Month </option>
 								<?php
 								$month = array("January", "February", "March", "April", "May", "June", "July", "August", "September", "Octobor", "November", "December");
@@ -100,7 +209,7 @@
                                    }
 								?>
 							</select>
-							<select>
+							<select name="year">
 								<option disabled="disabled" selected="selected"> Year </option>
 								<?php
 								  for ($i = 0; $i < 30; $i++) {
@@ -108,6 +217,11 @@
 								  }
  								?>
 							</select>
+							<span>
+								<?php
+                                echo $bDay;
+							    ?>
+							</span>
 						</td>
 					</tr>
 					<tr>
@@ -140,7 +254,7 @@
 					</tr>
 					<tr>
 						<td colspan="2" align="center">
-							<input type="submit" name="submit" value="register">
+							<input type="submit" name="register" value="register">
 						</td>
 					</tr>
 				</table>
