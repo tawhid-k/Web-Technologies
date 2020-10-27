@@ -6,6 +6,7 @@
    $cpass = "";
    $errMail = "";
    $mail = "";
+   $errPhone = "";
    $phone = "";
    $address = "";
    $bDay = "";
@@ -29,6 +30,32 @@
    	  if (empty($_POST["pass"])) {
    	  	$pass = "Password required*";
    	  }
+   	  else {
+   	  	$getPass = $_POST["pass"];
+   	  	if (strpos($getPass, "#") == false && strpos($getPass, "?") == false && $getPass[0] !== "#" && $getPass[0] !== "?") {
+   	  	  $pass = "Password must contain a special character [Hint: # / ?].<br>";
+   	  	}
+   	  	$num_present = false;
+   	  	$upper_present = false;
+   	  	$lower_present = false;
+   	  	for ($i = 0; $i < strlen($getPass); $i++) {
+          if ($getPass[$i] >= '0' && $getPass[$i] <= '9') {
+          	$num_present = true;
+          }
+          if ($getPass[$i] >= 'A' && $getPass[$i] <= 'Z') {
+          	$upper_present = true; 
+          }
+          if ($getPass[$i] >= 'a' && $getPass[$i] <= 'z') {
+          	$lower_present = true;
+          }
+   	  	}
+   	  	if ($upper_present == false || $lower_present == false) {
+   	  	  $pass .= "Password must combine at lest one upper letter and one lower letter.<br>";
+   	  	}
+   	  	if ($num_present == false) {
+   	  	  $pass .= "Password must contain at least one numeric character."; 
+   	  	}
+   	  }
    	  if (empty($_POST["cpass"])) {
    	  	$cpass = "Confirm password required*";
    	  }
@@ -46,7 +73,13 @@
    	  	$address = "Address required*";
    	  }
    	  if (empty($_POST["phone"]) || empty($_POST["code"])) {
-   	  	$phone = "Phone number required*";
+   	  	$errPhone = "Phone number required*";
+   	  }
+   	  else {
+         if (is_numeric($_POST["phone"]) == false) {
+         	$errPhone = "Phone number has to be numeric";
+         }
+         else $phone = htmlspecialchars($_POST["phone"]);
    	  }
    	  if (empty($_POST["address"]) || empty($_POST["city"]) || empty($_POST["state"]) || empty($_POST["zipCode"])) {
    	  	$address = "Each section of address should be filled*";
@@ -158,7 +191,7 @@
 							<input type="text" size="5" placeholder="Code" name="code"> - <input type="text" size="7" placeholder="Number" name = "phone">
 							<span>
 								<?php
-                                  echo $phone;
+                                  echo $errPhone;
 								?>
 							</span>
 						</td>
