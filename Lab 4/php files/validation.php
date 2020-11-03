@@ -16,7 +16,7 @@
        $file = $file->user;
        $is_success = false;
        foreach ($file as $i) {
-       	 echo $i->name . "  " . $_POST["uname"] . "<br>" . $i->pass . "  " . $_POST["pass"] . "<br>";
+       	 //echo $i->name . "  " . $_POST["uname"] . "<br>" . $i->pass . "  " . $_POST["pass"] . "<br>";
        	 if (($i->name == $_POST["uname"]) && ($i->pass == $_POST["pass"])) {
        	   $is_success = true;
        	 }
