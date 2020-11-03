@@ -12,17 +12,20 @@
        $has_err = true;
      }
      if (!$has_err) {
-       $file = simplexml_load_file("data.xml");
+       $file = simplexml_load_file("php files/data.xml");
        $file = $file->user;
        $is_success = false;
        foreach ($file as $i) {
-       	 if ($i->name == $_POST["uname"] && $i->pass == $_POST["pass"]) {
+       	 echo $i->name . "  " . $_POST["uname"] . "<br>" . $i->pass . "  " . $_POST["pass"] . "<br>";
+       	 if (($i->name == $_POST["uname"]) && ($i->pass == $_POST["pass"])) {
        	   $is_success = true;
        	 }
        }
        if ($is_success) {
+       	 echo "This is successful<br>";
        	 header("Location: dashboard.php");
        }
+       else echo "Wrong username or password!!!";
      } 
    }
 ?>

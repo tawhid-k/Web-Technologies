@@ -6,6 +6,8 @@
 		<pass>
 			1234
 		</pass>
+	</user>
+	<user>
 		<name>
 			Sabbir
 		</name>
@@ -13,4 +15,13 @@
 			5678
 		</pass>
 	</user>
+	<user>
+		<name>
+			Mustakim
+		</name>
+		<pass>
+			192837
+		</pass>
+	</user>
+
 </users>
