@@ -1,27 +1,15 @@
 <users>
 	<user>
-		<name>
-			Tawhid
-		</name>
-		<pass>
-			1234
-		</pass>
+		<name>Tawhid</name>
+		<pass>1234</pass>
 	</user>
 	<user>
-		<name>
-			Sabbir
-		</name>
-		<pass>
-			5678
-		</pass>
+		<name>Sabbir</name>
+		<pass>5678</pass>
 	</user>
 	<user>
-		<name>
-			Mustakim
-		</name>
-		<pass>
-			192837
-		</pass>
+		<name>Mustakim</name>
+		<pass>192837</pass>
 	</user>
 
 </users>

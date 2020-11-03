@@ -16,14 +16,15 @@
        $file = $file->user;
        $is_success = false;
        foreach ($file as $i) {
-       	 //echo $i->name . "  " . $_POST["uname"] . "<br>" . $i->pass . "  " . $_POST["pass"] . "<br>";
+       	var_dump($i->name);
        	 if (($i->name == $_POST["uname"]) && ($i->pass == $_POST["pass"])) {
+
        	   $is_success = true;
        	 }
        }
        if ($is_success) {
        	 echo "This is successful<br>";
-       	 header("Location: dashboard.php");
+       	 header("Location: php files/dashboard.php");
        }
        else echo "Wrong username or password!!!";
      } 
