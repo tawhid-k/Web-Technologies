@@ -1,14 +1,16 @@
 <?php
    if (isset($_POST["submit"])) {
-      $file = simplexml_load_file("$books.xml");
+      $file = simplexml_load_file("books.xml");
       $child = $file->addChild("book");
       $child->addChild("name", $_POST["name"]);
       $child->addChild("publisher", $_POST["publisher"]);
       $child->addChild("isbn", $_POST["isbn"]);
       $child->addChild("price", $_POST["price"]);
-      $child->addChild("image", $_POST["resources/"]);
+      $child->addChild("image", "resources/img.jpg");
       $child->addChild("cat", $_POST["category"]);
       $child->addChild("des", $_POST["description"]);
+      $newFile = fopen("books.xml", "w");
+      fwrite($newFile, $file->saveXML());
    }
 ?>
 <html>
