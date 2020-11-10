@@ -7,7 +7,7 @@
        $err_msg1 = "Username required*";
        $has_err = true;
      }
-     if (empty($_POST["pass"])) {
+     if (Empty($_POST["pass"])) {
        $err_msg2 = "Password required";
        $has_err = true;
      }

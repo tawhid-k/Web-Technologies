@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<admins>
+	<admin>
+		<fullname>Admin</fullname>
+		<username>admin</username>
+		<password>rgblightingkeyboards</password>
+		<gender>Male</gender>
+        <contact>01929383856</contact>
+        <city>Dhaka</city>
+	</admin>
+<admin><fullName>Tawhid</fullName><userName>tawhid_k</userName><password>12345678</password><gender>on</gender><mail>khondokar.tawhid@yahoo.com</mail><contact>01778444448</contact><city>Bashundhara</city></admin></admins>
