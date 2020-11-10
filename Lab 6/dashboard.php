@@ -16,8 +16,8 @@
 	<body>
 		<?php
                $books = simplexml_load_file("books.xml");
-               if (count($books->name) == 0) {
-               	 echo "<h1>No books to show</h1>";
+               if (count($books) == 0) {
+               	 echo "<h1>No books to show</h1> " . strval(count($books->name));
                }
                else { ?>
 			            <table style="">
@@ -35,6 +35,38 @@
 							<td> image </td>
 							<td> delete </td>
 						</tr>
+                        
+                        <?php
+                            $number = 0;
+                            foreach ($books as $i) {
+                            	$number++;
+                              echo "
+                                   <tr>
+                                     <td>
+                                         $number
+                                     </td>
+                                      <td> 
+                                          $i->name
+                                      </td>
+                                      <td> 
+                                          $i->publisher
+                                      </td>
+                                      <td> 
+                                          $i->isbn
+                                      </td>
+                                      <td> 
+                                          $i->price
+                                      </td>
+                                      <td> 
+                                         <img src = '$i->image' >";
+                                      echo "</td>
+                                      <td> 
+                                          <img src='resources/delete.png'>";
+                                   echo "   </td>
+                                   </tr>
+                            	";
+                            }
+                        ?>
 
 					</table>
                <?php }

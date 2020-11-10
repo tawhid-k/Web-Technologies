@@ -1,3 +1,14 @@
 <books>
-	<book></book>
+	<book>
+		<name>Theory of everything</name>
+		<publisher>Stephen Hawking</publisher>
+		<publisher>Stephen Hawking</publisher>
+		<isbn>7.8</isbn>
+		<price>1200</price>
+		<image>resources/</image>
+		<cat>Science Fiction</cat>
+		<cat>Science Fiction</cat>
+		<des>Awesome book</des>
+		<des>Awesome book</des>
+	</book>
 </books>

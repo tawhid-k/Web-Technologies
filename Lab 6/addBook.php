@@ -1,8 +1,15 @@
 <?php
-   if (isset[$_POST["submit"]]) {
-       
+   if (isset($_POST["submit"])) {
+      $file = simplexml_load_file("$books.xml");
+      $child = $file->addChild("book");
+      $child->addChild("name", $_POST["name"]);
+      $child->addChild("publisher", $_POST["publisher"]);
+      $child->addChild("isbn", $_POST["isbn"]);
+      $child->addChild("price", $_POST["price"]);
+      $child->addChild("image", $_POST["resources/"]);
+      $child->addChild("cat", $_POST["category"]);
+      $child->addChild("des", $_POST["description"]);
    }
-}
 ?>
 <html>
 	<title>Add Book</title>
@@ -47,6 +54,16 @@
 	        <tr>
 	        	<td>
 	        		<textarea name="description"></textarea>
+	        	</td>
+	        </tr>
+	         <tr>
+	        	<td>
+	        		Publisher
+	        	</td>
+	        </tr>
+	        <tr>
+	        	<td>
+	        		<input type="text" name="publisher">
 	        	</td>
 	        </tr>
 	        <tr>
