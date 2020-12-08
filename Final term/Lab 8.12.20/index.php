@@ -2,6 +2,7 @@
 <head>
 	<title>Index Page</title>
 	<?php require_once 'controller.php'; ?>
+	<script src = "validate_index.js"></script>
 </head>
 <body>
 	 <form action="" onsubmit="return validate()" method="post">
