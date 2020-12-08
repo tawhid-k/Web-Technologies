@@ -10,8 +10,10 @@ function validate() {
     var pass = get("pass").value;
     //debugger;
     for (i = 0; i < name.length; i++) {
-       if (name[i] >= '0' || name[i] <= '9') {
+       if (name[i] >= '0' && name[i] <= '9') {
        	  has_error = true;
+          console.log(name);
+          console.log(name[i]);
        }
     }
     var email_format = false;
@@ -24,7 +26,9 @@ function validate() {
     	   }
     	}
     }
-    has_error = email_format;
+    if (email_format == false) {
+      has_error = true;
+    }
     for (i = 0; i < uname.length; i++) {
     	if (uname[i] == ' ') {
     	   has_error = true;

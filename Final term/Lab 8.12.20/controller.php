@@ -1,7 +1,7 @@
 <?php 
   require_once 'database.php';
   if (isset($_POST["register"])) {
-  	 addUser($_POST["name"], $_POST["uname"], $_POST["mail"], md5($_POST["pass"]));
+  	 addUser($_POST["name"], $_POST["uname"], $_POST["mail"], $_POST["phone"], $_POST["pass"]);
   	 header("Location: index.php");
   }
   if (isset($_POST["login"])) {
@@ -10,11 +10,10 @@
   	 }
   	 else echo "Wrong username or password";
   }
-  function addUser ($n, $un, $m, $p) {
+  function addUser ($n, $un, $m, $phn, $p) {
       $p = md5($p);
-      $q = "insert into users values ('$n', '$un', '$m', '$p')";
+      $q = "insert into users values ('$n', '$un', '$m', $phn,'$p')";
       runQuery($q);
-      header("Location: ../views/login.php");
 	}
    function isUser ($u, $p) {
       $p = md5($p);

@@ -2,6 +2,6 @@ function get (i) {
    return document.getElementById(i);
 }
 function validate() {
-   //Remaining
-   return true;
+   username = get("uname").value;
+   password = get("pass").value;
 }

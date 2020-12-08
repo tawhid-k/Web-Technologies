@@ -2,7 +2,6 @@
 <head>
 	<title>Index Page</title>
 	<?php require_once 'controller.php'; ?>
-	<script src="validate_index.js"> </script>
 </head>
 <body>
 	 <form action="" onsubmit="return validate()" method="post">
@@ -13,7 +12,7 @@
 	 	 			Username:
 	 	 		</td>
 	 	 		<td>
-	 	 			<input type="text" id="uname" name="username">
+	 	 			<input type="text" name="username">
 	 	 		</td>
 	 	 	</tr>
 	 	 	<tr>
@@ -21,7 +20,7 @@
 	 	 			Password:
 	 	 		</td>
 	 	 		<td>
-	 	 			<input type="Password" id="pass" name="pass">
+	 	 			<input type="Password" name="pass">
 	 	 		</td>
 	 	 	</tr>
 	 	 	<tr>
