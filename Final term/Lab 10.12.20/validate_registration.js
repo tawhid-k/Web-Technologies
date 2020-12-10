@@ -29,6 +29,7 @@ function validate() {
   if (id == "") {
   	  err_id.innerHTML = "ID Required*";
   	  err_id.style.color = "red";
+  	  has_error = true;
   }
   else if (id.length != 10) {
   	has_error = true;
@@ -46,6 +47,7 @@ function validate() {
   if (dob == "") {
   	  err_dob.innerHTML = "Date of Birth Required*";
   	  err_dob.style.color = "red";
+  	  has_error = true;
   }
   else for(i = 0; i < dob.length; i++) {
   	if (!(dob[i] >= '0' && dob[i] <= '9') && !(dob[i] == '-') && !(dob[i] == '/')) {
@@ -58,6 +60,7 @@ function validate() {
   if (credit.length == "") {
   	  err_credit.innerHTML = "Credit Required*";
   	  err_credit.style.color = "red";
+  	  has_error = true;
   }
   else for(i = 0; i < credit.length; i++) {
   	if (!(credit[i] >= '0' && credit[i] <= '9')) {
@@ -70,6 +73,7 @@ function validate() {
   if (cgpa == "") {
   	 err_cgpa.innerHTML = "Cgpa Required*";
   	 err_cgpa.style.color = "red";
+  	 has_error = true;
   }
   else for(i = 0; i < cgpa.length; i++) {
   	if (!(cgpa[i] >= '0' && cgpa[i] <= '9') && !(cgpa[i] == '.')) {
@@ -82,6 +86,7 @@ function validate() {
   if (did == "") {
   	  err_did.innerHTML = "Department ID Required*";
   	  err_did.style.color = "red";
+  	  has_error = true;
   }
   for (i = 0; i < did.length; i++) {
   	if (!(did[i] >= '0' && did[i] <= '9')) {
